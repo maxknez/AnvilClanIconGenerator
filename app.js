@@ -5,8 +5,8 @@ const factions = {
 };
 let maskNumbers = window.DV_MASKS ?? ['1', '2', '3', '4', '5', '6'];
 const copy = {
-  en: { editorTitle:'Shield editor', intro:'Choose a faction, pattern, and two decoration colours.', faction:'Faction', factionTip:'style base', decoration:'Decoration', firstColor:'First colour', secondColor:'Second colour', reset:'Reset settings', preview:'PREVIEW / 128 × 128', mask:'MASK', previousMask:'Previous mask', nextMask:'Next mask', customColour:'Custom colour', download:'Download PNG' },
-  ru: { editorTitle:'Редактор щитка', intro:'Выберите фракцию, маску и два цвета декора.', faction:'Фракция', factionTip:'основа стиля', decoration:'Декор', firstColor:'Первый цвет', secondColor:'Второй цвет', reset:'Сбросить настройки', preview:'ПРЕДПРОСМОТР / 128 × 128', mask:'МАСКА', previousMask:'Предыдущая маска', nextMask:'Следующая маска', customColour:'Свой цвет', download:'Скачать PNG' }
+  en: { editorTitle:'Shield editor', intro:'Choose a faction, pattern, and two decoration colours.', faction:'Faction', factionTip:'style base', decoration:'Decoration', firstColor:'First colour', secondColor:'Second colour', swapColours:'Swap colours', preview:'PREVIEW / 128 × 128', mask:'MASK', previousMask:'Previous mask', nextMask:'Next mask', customColour:'Custom colour', download:'Download PNG' },
+  ru: { editorTitle:'Редактор щитка', intro:'Выберите фракцию, маску и два цвета декора.', faction:'Фракция', factionTip:'основа стиля', decoration:'Декор', firstColor:'Первый цвет', secondColor:'Второй цвет', swapColours:'Поменять цвета', preview:'ПРЕДПРОСМОТР / 128 × 128', mask:'МАСКА', previousMask:'Предыдущая маска', nextMask:'Следующая маска', customColour:'Свой цвет', download:'Скачать PNG' }
 };
 const state = { faction: 'Ancient', mask: maskNumbers[0], colorA: factions.Ancient.colors[0], colorB: factions.Ancient.colors[1], language: 'en' };
 const el = id => document.getElementById(id);
@@ -113,7 +113,7 @@ document.addEventListener('click', event => {
   if (button.id === 'downloadButton') {
     canvas.toBlob(blob => { const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = 'herald-shield.png'; link.click(); URL.revokeObjectURL(link.href); }, 'image/png');
   }
-  if (button.id === 'resetButton') Object.assign(state, { faction:'Ancient', mask:maskNumbers[0], colorA:factions.Ancient.colors[0], colorB:factions.Ancient.colors[1] });
+  if (button.id === 'swapButton') [state.colorA, state.colorB] = [state.colorB, state.colorA];
   render();
 });
 document.addEventListener('change', event => {
