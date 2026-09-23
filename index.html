@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Herald — Shield Editor</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="workspace">
+      <aside class="panel controls" aria-label="Shield settings">
+        <div class="panel-heading"><span>01</span><h1 data-i18n="editorTitle">Shield editor</h1></div>
+        <p class="intro" data-i18n="intro">Choose a faction, pattern, and two decoration colours.</p>
+
+        <fieldset class="control-group faction-group">
+          <legend><b data-i18n="faction">Faction</b><small data-i18n="factionTip">style base</small></legend>
+          <div class="faction-options" id="factionOptions"></div>
+        </fieldset>
+
+        <fieldset class="control-group">
+          <legend><b data-i18n="decoration">Decoration</b><small>dv_</small></legend>
+          <div class="mask-options" id="maskOptions"></div>
+          <div class="color-label" data-i18n="firstColor">First colour</div><div class="swatches" id="colorOne"></div>
+          <div class="color-label" data-i18n="secondColor">Second colour</div><div class="swatches" id="colorTwo"></div>
+        </fieldset>
+
+        <button class="reset" id="resetButton" type="button" data-i18n="reset">Reset settings</button>
+      </aside>
+
+      <section class="preview-area">
+        <div class="language-switch preview-language" aria-label="Language selection"><button class="language active" type="button" data-language="en">EN</button><button class="language" type="button" data-language="ru">РУ</button></div>
+        <div class="ambient glow-one"></div><div class="ambient glow-two"></div>
+        <div class="preview-label" data-i18n="preview">PREVIEW / 128 × 128</div>
+        <div class="shield-stage" aria-label="Предпросмотр иконки">
+          <div class="shield" id="shield">
+            <canvas class="layer shield-canvas" id="shieldCanvas" width="256" height="256" aria-label="Готовая иконка щитка"></canvas>
+            <div class="layer layer-bg" id="bgLayer"></div>
+            <div class="layer layer-decoration" id="dvLayer"></div>
+            <img class="layer layer-symbol" id="ltLayer" alt="" />
+            <img class="layer layer-frame" id="frLayer" alt="" />
+          </div>
+        </div>
+        <button class="download" id="downloadButton" type="button" data-i18n="download">Download PNG</button>
+      </section>
+    </section>
+  </main>
+  <script src="dv-manifest.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
