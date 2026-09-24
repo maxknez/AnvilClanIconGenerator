@@ -19,7 +19,7 @@
         </fieldset>
 
         <fieldset class="control-group">
-          <legend><b data-i18n="decoration">Decoration</b><small>dv_</small></legend>
+          <legend><b data-i18n="decoration">Decoration</b><small>m_</small></legend>
           <div class="mask-options" id="maskOptions"></div>
           <div class="color-label" data-i18n="firstColor">First colour</div><div class="swatches" id="colorOne"></div>
           <div class="color-label" data-i18n="secondColor">Second colour</div><div class="swatches" id="colorTwo"></div>
@@ -41,11 +41,16 @@
             <img class="layer layer-frame" id="frLayer" alt="" />
           </div>
         </div>
+        <div class="transform-controls" aria-label="Mask position and size">
+          <div class="move-pad"><button data-move="up" aria-label="Move up">↑</button><button data-move="left" aria-label="Move left">←</button><button data-move="reset" aria-label="Center mask">⊙</button><button data-move="right" aria-label="Move right">→</button><button data-move="down" aria-label="Move down">↓</button></div>
+          <div class="size-controls" id="sizeControls"></div>
+          <div class="flip-controls"><button data-flip="x" aria-label="Reflect across vertical axis">Sinister</button><button data-flip="y" aria-label="Reflect across horizontal axis">Reverse</button></div>
+        </div>
         <button class="download" id="downloadButton" type="button" data-i18n="download">Download PNG</button>
       </section>
     </section>
   </main>
-  <script src="dv-manifest.js"></script>
+  <script src="mask-config.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
