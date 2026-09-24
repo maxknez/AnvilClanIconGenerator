@@ -4,6 +4,7 @@ const factions = {
   Remnant: { asset: 'Remnant', icon: 'R', title: 'Щит Остатков', colors: ['#6F2327','#4077A9','#16856A','#171717','#DFECEF','#AA8139'] }
 };
 const maskConfig = window.MASK_CONFIG;
+const siteConfig = window.SITE_CONFIG ?? { version: '0.0.0' };
 const masks = maskConfig.masks;
 const copy = {
   en: { editorTitle:'Shield editor', intro:'Choose a faction, pattern, and two decoration colours.', faction:'Faction', factionTip:'style base', decoration:'Decoration', firstColor:'First colour', secondColor:'Second colour', swapColours:'Swap colours', preview:'PREVIEW / 128 × 128', mask:'MASK', previousMask:'Previous mask', nextMask:'Next mask', customColour:'Custom colour', download:'Download PNG' },
@@ -29,6 +30,7 @@ function localize() {
   document.title = state.language === 'en' ? 'Herald — Shield Editor' : 'Herald — Редактор щитка';
   document.querySelectorAll('[data-i18n]').forEach(node => { node.textContent = t(node.dataset.i18n); });
   document.querySelectorAll('[data-language]').forEach(node => node.classList.toggle('active', node.dataset.language === state.language));
+  el('siteVersion').textContent = `VERSION ${siteConfig.version}`;
 }
 function loadImage(src) {
   if (imageCache.has(src)) return imageCache.get(src);
