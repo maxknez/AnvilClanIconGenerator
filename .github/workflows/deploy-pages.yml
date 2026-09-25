@@ -31,6 +31,22 @@ jobs:
       - name: Update mask manifest
         run: node sync-dv-resources.mjs
 
+      - name: Stamp deployed version
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const file = 'site-config.js';
+          const revision = process.env.GITHUB_SHA.slice(0, 7);
+          const source = fs.readFileSync(file, 'utf8');
+          const stamped = source.replace(
+            /version:\s*'([^']+)'/,
+            (_, version) => `version: '${version.split('+')[0]}+${revision}'`,
+          );
+          fs.writeFileSync(file, stamped);
+          console.log(`Deploying version ${stamped.match(/version:\s*'([^']+)'/)[1]}`);
+          NODE
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
